@@ -1,0 +1,121 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f6fa; color: #333; }
+
+/* 헤더 */
+.header { background: #2d3436; color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+.header h1 { font-size: 18px; font-weight: 600; }
+.header-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.header-right .user-email { color: #b2bec3; }
+
+/* 탭 */
+.tabs { display: flex; background: #fff; border-bottom: 2px solid #dfe6e9; padding: 0 24px; }
+.tab {
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #636e72;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.tab:hover { color: #2d3436; }
+.tab.active { color: #0984e3; border-bottom-color: #0984e3; }
+
+/* 컨텐츠 */
+.content { padding: 24px; max-width: 1200px; margin: 0 auto; }
+
+/* 카드 그리드 */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.card .label { font-size: 12px; color: #636e72; text-transform: uppercase; margin-bottom: 8px; }
+.card .value { font-size: 28px; font-weight: 700; }
+
+/* 테이블 */
+.table-wrap { background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #f8f9fa; text-align: left; padding: 10px 12px; font-weight: 600; color: #636e72; white-space: nowrap; }
+td { padding: 10px 12px; border-top: 1px solid #f1f2f6; }
+tr:hover td { background: #f8f9fa; }
+
+/* 배지 */
+.badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.badge-new { background: #dfe6e9; color: #2d3436; }
+.badge-ordered { background: #ffeaa7; color: #6c5a00; }
+.badge-shipped { background: #55efc4; color: #006200; }
+.badge-completed { background: #74b9ff; color: #003580; }
+.badge-error { background: #fab1a0; color: #6b0000; }
+
+/* 버튼 */
+.btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.85; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: #0984e3; color: #fff; }
+.btn-danger { background: #d63031; color: #fff; }
+.btn-secondary { background: #636e72; color: #fff; }
+.btn-group { display: flex; gap: 8px; margin-bottom: 24px; align-items: center; flex-wrap: wrap; }
+
+/* 폼 */
+.form-card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 24px; }
+.form-card h3 { font-size: 15px; margin-bottom: 16px; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.form-group label { display: block; font-size: 12px; color: #636e72; margin-bottom: 4px; }
+.form-group input { width: 100%; padding: 8px 10px; border: 1px solid #dfe6e9; border-radius: 6px; font-size: 13px; }
+.form-group input:focus { outline: none; border-color: #0984e3; }
+
+/* 토스트 */
+.toast {
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.toast-success { background: #00b894; }
+.toast-error { background: #d63031; }
+
+.section-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+.empty { text-align: center; padding: 40px; color: #b2bec3; }
+
+/* 토글 스위치 */
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle .slider { position: absolute; inset: 0; background: #b2bec3; border-radius: 24px; cursor: pointer; transition: 0.3s; }
+.toggle .slider::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+.toggle input:checked + .slider { background: #00b894; }
+.toggle input:checked + .slider::before { transform: translateX(20px); }
+
+/* 커넥터 카드 */
+.connector-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.connector-card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.connector-card .cc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.connector-card .cc-header h3 { font-size: 16px; font-weight: 600; }
+.connector-card .cc-fields { display: flex; flex-direction: column; gap: 10px; }
+.connector-card .cc-actions { margin-top: 14px; }
+
+/* 로그인/회원가입 화면 */
+.auth-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f5f6fa; }
+.auth-box { background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 400px; max-width: 90vw; }
+.auth-box h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+.auth-box .subtitle { font-size: 13px; color: #636e72; text-align: center; margin-bottom: 24px; }
+.auth-box .form-group { margin-bottom: 16px; }
+.auth-box .form-group label { font-size: 13px; font-weight: 500; color: #2d3436; margin-bottom: 6px; display: block; }
+.auth-box .form-group input { width: 100%; padding: 10px 12px; border: 1px solid #dfe6e9; border-radius: 6px; font-size: 14px; }
+.auth-box .form-group input:focus { outline: none; border-color: #0984e3; box-shadow: 0 0 0 3px rgba(9,132,227,0.1); }
+.auth-box .btn { width: 100%; padding: 12px; font-size: 14px; margin-top: 8px; }
+.auth-box .switch-link { text-align: center; margin-top: 16px; font-size: 13px; color: #636e72; }
+.auth-box .switch-link a { color: #0984e3; cursor: pointer; text-decoration: none; }
+.auth-box .switch-link a:hover { text-decoration: underline; }
+
+/* 스켈레톤 로딩 */
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.skeleton-card { height: 80px; }
+.skeleton-row { height: 16px; margin-bottom: 10px; }
+.loading-overlay { display: flex; align-items: center; justify-content: center; padding: 40px; color: #b2bec3; font-size: 14px; }

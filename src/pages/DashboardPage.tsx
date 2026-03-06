@@ -1,8 +1,6 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
 import {
   getDashboard,
-  getDomeggookStatus,
-  domeggookLogin as apiDomeggookLogin,
   manualCheck as apiManualCheck,
   manualTracking as apiManualTracking,
 } from '../api/dashboard';
@@ -23,20 +21,6 @@ export default function DashboardPage() {
     error: dashError,
   } = useQuery({ queryKey: ['dashboard'], queryFn: getDashboard });
 
-  const { data: domeStatus, refetch: refetchDome } = useQuery({
-    queryKey: ['domeggook-status'],
-    queryFn: getDomeggookStatus,
-  });
-
-  const loginMutation = useMutation({
-    mutationFn: apiDomeggookLogin,
-    onSuccess: (data) => {
-      showToast(data.message);
-      refetchDome();
-    },
-    onError: (err: Error) => showToast('로그인 실패: ' + err.message, 'error'),
-  });
-
   const checkMutation = useMutation({
     mutationFn: apiManualCheck,
     onSuccess: (data) => showToast(data.message),
@@ -48,8 +32,6 @@ export default function DashboardPage() {
     onSuccess: (data) => showToast(data.message),
     onError: (err: Error) => showToast('실행 실패: ' + err.message, 'error'),
   });
-
-  const domeLoggedIn = domeStatus?.logged_in ?? false;
 
   return (
     <>
@@ -68,26 +50,6 @@ export default function DashboardPage() {
         >
           {trackingMutation.isPending ? '실행 중...' : '송장 수집 실행'}
         </button>
-
-        {domeStatus !== undefined && (
-          <>
-            <span
-              className={`badge ${domeLoggedIn ? 'badge-shipped' : 'badge-error'}`}
-              style={{ marginLeft: '8px', lineHeight: '32px' }}
-            >
-              도매매: {domeLoggedIn ? '로그인됨' : '로그아웃'}
-            </span>
-            {!domeLoggedIn && (
-              <button
-                className="btn btn-primary"
-                onClick={() => loginMutation.mutate()}
-                disabled={loginMutation.isPending}
-              >
-                {loginMutation.isPending ? '브라우저 열림 - 로그인 대기 중...' : '도매매 로그인'}
-              </button>
-            )}
-          </>
-        )}
       </div>
 
       {dashLoading && (

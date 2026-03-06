@@ -6,6 +6,16 @@ export interface NaverProductsResponse {
   totalCount?: number;
 }
 
+export interface NaverProductOption {
+  id?: number;
+  optionName1: string;
+  optionName2?: string;
+  optionName3?: string;
+  stockQuantity?: number;
+  price?: number;
+  usable?: boolean;
+}
+
 export interface NaverProduct {
   channelProductNo?: string | number;
   originProductNo?: string | number;
@@ -15,6 +25,7 @@ export interface NaverProduct {
   channelProductPrice?: number;
   statusType?: string;
   channelProductDisplayStatusType?: string;
+  options?: NaverProductOption[];
 }
 
 export interface CreateMappingData {

@@ -106,16 +106,17 @@ export default function MappingsPage() {
                   <th>가격</th>
                   <th>상태</th>
                   <th>구매처 URL</th>
-                  <th>구매처 옵션 (JSON)</th>
+                  <th>판매처 옵션</th>
+                  <th>구매처 옵션</th>
                   <th>연결</th>
                 </tr>
               </thead>
               <tbody>
                 {naverFetching && (
-                  <tr><td colSpan={7} className="loading-overlay">불러오는 중...</td></tr>
+                  <tr><td colSpan={8} className="loading-overlay">불러오는 중...</td></tr>
                 )}
                 {!naverFetching && (naverData?.contents ?? []).length === 0 && (
-                  <tr><td colSpan={7} className="empty">상품이 없습니다</td></tr>
+                  <tr><td colSpan={8} className="empty">상품이 없습니다</td></tr>
                 )}
                 {!naverFetching && (naverData?.contents ?? []).map((p: NaverProduct, i: number) => (
                   <NaverProductRow
@@ -183,7 +184,7 @@ export default function MappingsPage() {
               />
             </div>
             <div className="form-group">
-              <label>구매처 옵션 (JSON)</label>
+              <label>구매처 옵션</label>
               <input
                 type="text"
                 value={form.domeggook_option}
@@ -215,10 +216,10 @@ export default function MappingsPage() {
           </thead>
           <tbody>
             {mappingsLoading && (
-              <tr><td colSpan={7} className="loading-overlay">불러오는 중...</td></tr>
+              <tr><td colSpan={8} className="loading-overlay">불러오는 중...</td></tr>
             )}
             {!mappingsLoading && (mappings ?? []).length === 0 && (
-              <tr><td colSpan={7} className="empty">매핑이 없습니다</td></tr>
+              <tr><td colSpan={8} className="empty">매핑이 없습니다</td></tr>
             )}
             {mappings?.map((m) => (
               <tr key={m.id}>
@@ -302,6 +303,9 @@ function NaverProductRow({ product, existingMapping, onLink }: NaverProductRowPr
     onLink(pid, name, url.trim(), option.trim());
   }
 
+  // 네이버 상품 옵션 표시 텍스트
+  const naverOptions = product.options ?? [];
+
   return (
     <tr>
       <td>{pid}</td>
@@ -321,6 +325,22 @@ function NaverProductRow({ product, existingMapping, onLink }: NaverProductRowPr
           placeholder="구매처 URL 입력"
           style={{ width: '200px', padding: '4px 8px', border: '1px solid #dfe6e9', borderRadius: '4px', fontSize: '12px' }}
         />
+      </td>
+      <td>
+        {naverOptions.length > 0 ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '11px', maxHeight: '80px', overflowY: 'auto' }}>
+            {naverOptions.map((opt, i) => {
+              const parts = [opt.optionName1, opt.optionName2, opt.optionName3].filter(Boolean);
+              return (
+                <span key={i} style={{ color: opt.usable === false ? '#b2bec3' : '#2d3436' }}>
+                  {parts.join(' / ')}{opt.stockQuantity != null ? ` (${opt.stockQuantity})` : ''}
+                </span>
+              );
+            })}
+          </div>
+        ) : (
+          <span style={{ fontSize: '11px', color: '#b2bec3' }}>옵션 없음</span>
+        )}
       </td>
       <td>
         {optionLoading ? (
@@ -346,7 +366,7 @@ function NaverProductRow({ product, existingMapping, onLink }: NaverProductRowPr
             type="text"
             value={option}
             onChange={(e) => setOption(e.target.value)}
-            placeholder='{"select": "value"}'
+            placeholder="URL 입력 시 자동 조회"
             style={{ width: '140px', padding: '4px 8px', border: '1px solid #dfe6e9', borderRadius: '4px', fontSize: '12px' }}
           />
         )}

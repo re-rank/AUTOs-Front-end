@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(cd:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "mcp__Neon__list_projects",
+      "mcp__Neon__run_sql",
+      "Bash(node -e \"const bcrypt = require\\('bcrypt'\\); bcrypt.hash\\('9513140pP@', 10\\).then\\(h => console.log\\(h\\)\\);\" 2>/dev/null || npx -y bcrypt-cli hash '9513140pP@' 2>/dev/null || python3 -c \"import bcrypt; print\\(bcrypt.hashpw\\(b'9513140pP@', bcrypt.gensalt\\(\\)\\).decode\\(\\)\\)\" 2>/dev/null)",
+      "Bash(node:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

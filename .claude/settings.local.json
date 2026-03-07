@@ -20,7 +20,8 @@
       "Bash(cd E:/AUTOs/Back_end && git add src/connectors/naver/naver.connector.ts && git commit -m \"$\\(cat <<'EOF'\nfix: 네이버 상품 옵션 조회를 순차 처리로 변경하여 레이트 리밋 방지\n\nPromise.all 병렬 호출 시 네이버 API 레이트 리밋에 걸려\n모든 옵션이 빈 배열로 반환되던 문제 수정.\n에러 로깅도 추가.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push 2>&1)",
       "Bash(cd E:/AUTOs/Back_end && git add src/connectors/naver/naver.connector.ts && git commit -m \"$\\(cat <<'EOF'\nfix: 네이버 상품 옵션 조회를 5개씩 배치 병렬로 변경\n\n순차 조회 시 HTTP 타임아웃 발생 문제 해결.\n5개씩 배치 병렬 처리로 속도와 레이트 리밋 균형.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push 2>&1)",
       "Bash(cd E:/AUTOs/Back_end && git add src/connectors/naver/naver.connector.ts && git commit -m \"$\\(cat <<'EOF'\ndebug: 네이버 상품 옵션 조회 진행/결과 로그 추가\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push 2>&1)",
-      "Bash(cd E:/AUTOs/Back_end && git add src/connectors/naver/naver.connector.ts && git commit -m \"$\\(cat <<'EOF'\ndebug: extractOptions 실제 API 응답 구조 로깅 추가\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push 2>&1)"
+      "Bash(cd E:/AUTOs/Back_end && git add src/connectors/naver/naver.connector.ts && git commit -m \"$\\(cat <<'EOF'\ndebug: extractOptions 실제 API 응답 구조 로깅 추가\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push 2>&1)",
+      "Bash(cd E:/AUTOs/Back_end && git add src/connectors/naver/naver.connector.ts && git commit -m \"$\\(cat <<'EOF'\nfix: 네이버 API v2 옵션 구조에 맞게 extractOptions 수정\n\nv2 API는 optionStandards/optionSimple/optionCustom 키를 사용.\n기존 v1\\(optionCombinations/simpleOptionInfo\\) fallback도 유지.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push 2>&1)"
     ]
   }
 }

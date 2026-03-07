@@ -23,14 +23,26 @@ export default function DashboardPage() {
 
   const checkMutation = useMutation({
     mutationFn: apiManualCheck,
-    onSuccess: (data) => showToast(data.message),
-    onError: (err: Error) => showToast('실행 실패: ' + err.message, 'error'),
+    onSuccess: (data) => {
+      showToast(data.message);
+      alert(data.message);
+    },
+    onError: (err: Error) => {
+      showToast('실행 실패: ' + err.message, 'error');
+      alert('실행 실패: ' + err.message);
+    },
   });
 
   const trackingMutation = useMutation({
     mutationFn: apiManualTracking,
-    onSuccess: (data) => showToast(data.message),
-    onError: (err: Error) => showToast('실행 실패: ' + err.message, 'error'),
+    onSuccess: (data) => {
+      showToast(data.message);
+      alert(data.message);
+    },
+    onError: (err: Error) => {
+      showToast('실행 실패: ' + err.message, 'error');
+      alert('실행 실패: ' + err.message);
+    },
   });
 
   return (

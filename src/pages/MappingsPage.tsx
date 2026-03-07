@@ -123,7 +123,7 @@ export default function MappingsPage() {
                     key={i}
                     product={p}
                     index={i}
-                    existingMapping={existingMappingsMap[String(p.channelProductNo || p.originProductNo || '')]}
+                    existingMapping={existingMappingsMap[String(p.originProductNo || p.channelProductNo || '')]}
                     onLink={(productId, productName, url, option) => {
                       createMutation.mutate({
                         source: 'naver',
@@ -255,7 +255,7 @@ interface NaverProductRowProps {
 }
 
 function NaverProductRow({ product, existingMapping, onLink }: NaverProductRowProps) {
-  const pid = String(product.channelProductNo || product.originProductNo || '');
+  const pid = String(product.originProductNo || product.channelProductNo || '');
   const name = product.channelProductName || product.name || '';
   const price = product.salePrice || product.channelProductPrice || 0;
   const status = product.statusType || product.channelProductDisplayStatusType || '';

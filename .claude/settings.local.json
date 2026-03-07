@@ -16,7 +16,8 @@
       "mcp__playwright__browser_close",
       "Bash(head:*)",
       "Bash(cd E:/AUTOs/Back_end && npx tsc --noEmit 2>&1)",
-      "Bash(cd E:/AUTOs/Back_end && git push 2>&1)"
+      "Bash(cd E:/AUTOs/Back_end && git push 2>&1)",
+      "Bash(cd E:/AUTOs/Back_end && git add src/connectors/naver/naver.connector.ts && git commit -m \"$\\(cat <<'EOF'\nfix: 네이버 상품 옵션 조회를 순차 처리로 변경하여 레이트 리밋 방지\n\nPromise.all 병렬 호출 시 네이버 API 레이트 리밋에 걸려\n모든 옵션이 빈 배열로 반환되던 문제 수정.\n에러 로깅도 추가.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push 2>&1)"
     ]
   }
 }
